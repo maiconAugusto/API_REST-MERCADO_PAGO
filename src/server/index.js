@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('../routes/index');
+const DB = require('../database/index');
 const cors = require('cors');
 const mercado_pago = require('mercadopago');
 require('dotenv').config()
@@ -7,9 +8,18 @@ require('dotenv').config()
 class Server {
     constructor() {
         this.server = express();
+        this.database();
         this.paymentML();
         this.middleware();
         this.route();
+    }
+    database() {
+        DB.then(() => {
+            console.log('database connection');
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     }
     paymentML() {
         mercado_pago.configure({
