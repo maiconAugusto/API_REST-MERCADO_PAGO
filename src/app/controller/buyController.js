@@ -7,7 +7,6 @@ module.exports = {
             const response = await MP.preferences.create(items)
             return res.redirect(response.body.init_point)
         } catch (error) {
-            console.log(error)
             return res.status(401).json({data: error})
         }   
     }
