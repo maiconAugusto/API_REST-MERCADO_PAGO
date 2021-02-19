@@ -1,3 +1,3 @@
 const app = require('./server/index');
 
-app.listen(8080)
+app.listen(process.env.PORT || 8080)
