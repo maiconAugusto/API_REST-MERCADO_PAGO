@@ -9,7 +9,7 @@ class Server {
     constructor() {
         this.server = express();
         this.database();
-        this.paymentML();
+        this.paymentMP();
         this.middleware();
         this.route();
     }
@@ -21,7 +21,7 @@ class Server {
             console.log(error);
         })
     }
-    paymentML() {
+    paymentMP() {
         mercado_pago.configure({
             sandbox: true,
             access_token: process.env.ACCESS_KEY
