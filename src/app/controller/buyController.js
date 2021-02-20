@@ -1,5 +1,4 @@
 const MP = require('mercadopago');
-const { update } = require('../model/payment');
 const payment = require('../model/payment');
 
 module.exports = {
@@ -8,7 +7,7 @@ module.exports = {
             const items = req.body;
             const response = await MP.preferences.create(items);
 
-            await payment({paymentId: items.external_reference, userEmail: items.payer.email}).save();
+            await payment({paymentId: items.external_reference, userEmail: items.payer.email, status: 'pending'}).save();
 
             return res.redirect(response.body.init_point)
         } catch (error) {
@@ -16,6 +15,8 @@ module.exports = {
         }   
     },
     async update(req, res) {
-        console.log(req)
+        const {status, paymentId} = req.body;
+        await payment.updateOne({'paymentId': paymentId}, {status: status});
+        return res.status(200).json({data: 'approved'})
     }
 }

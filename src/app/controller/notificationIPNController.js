@@ -15,7 +15,7 @@ module.exports = {
             if (response.body.results[0] !== undefined) {
                 const data = { 
                     status: response.body.results[0].status,
-                    paymentID: id
+                    paymentId: id
                 }
                 req.body = data;
                 buyController.update(req, res);
