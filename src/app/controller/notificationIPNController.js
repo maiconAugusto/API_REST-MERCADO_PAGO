@@ -1,8 +1,9 @@
 
 module.exports = {
     create(req, res) {
-        const {id, topic} = req.body;
-        console.log(req.body);
+        const {id} = req.query;
+        console.log(id);
         console.log('hehe')
+        return res.status(200)
     }
 }
