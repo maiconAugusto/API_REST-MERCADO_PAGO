@@ -12,11 +12,10 @@ module.exports = {
             const response = await MP.payment.search({
                 qs: filter
             })
-            console.log(response.body.results[0])
             if (response.body.results[0] !== undefined) {
                 const data = { 
                     status: response.body.results[0].status,
-                    paymentId: id
+                    paymentId: response.body.results[0].external_reference
                 }
                 req.body = data;
                 buyController.update(req, res);
