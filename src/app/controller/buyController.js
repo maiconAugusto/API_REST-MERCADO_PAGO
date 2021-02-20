@@ -1,4 +1,5 @@
 const MP = require('mercadopago');
+const { update } = require('../model/payment');
 const payment = require('../model/payment');
 
 module.exports = {
@@ -13,5 +14,8 @@ module.exports = {
         } catch (error) {
             return res.status(401).json({data: error})
         }   
+    },
+    async update(req, res) {
+        console.log(req.body.data)
     }
 }
