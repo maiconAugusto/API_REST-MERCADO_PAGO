@@ -16,6 +16,6 @@ module.exports = {
         }   
     },
     async update(req, res) {
-        console.log(req.body.data)
+        console.log(req)
     }
 }
