@@ -11,7 +11,7 @@ module.exports = {
             const response = await MP.payment.search({
                 qs: filter
             })
-            console.log(response)
+            console.log(response.body.results[0])
         }, 20000)
         return res.status(200);
     }
